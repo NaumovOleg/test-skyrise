@@ -39,6 +39,12 @@ export class CreativeLibraryFunctionConstruct extends Construct {
             'ANY',
             new LambdaIntegration(handler, { proxy: true }),
         );
+        
+
+        http.addProxy({
+            defaultIntegration:new LambdaIntegration(handler, { proxy: true }),
+            anyMethod: true 
+        })
     }
 
 }
