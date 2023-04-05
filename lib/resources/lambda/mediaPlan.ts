@@ -32,7 +32,7 @@ export class MediaPlanFunctionConstruct extends Construct {
 
         this.handler = handler;
 
-        const http = apiGateway.root.addResource('media-plan/*');
+        const http = apiGateway.root.addResource('media-plan');
 
         http.addMethod(
             'ANY',

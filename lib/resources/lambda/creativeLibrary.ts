@@ -1,6 +1,6 @@
 import { LambdaIntegration } from "aws-cdk-lib/aws-apigateway";
-import ec2 from 'aws-cdk-lib/aws-ec2';
-import lambda from 'aws-cdk-lib/aws-lambda-nodejs';
+import * as ec2 from 'aws-cdk-lib/aws-ec2';
+import * as lambda from 'aws-cdk-lib/aws-lambda-nodejs';
 import { Construct } from 'constructs';
 import { config } from 'node-config-ts';
 import { LambdaResources } from '../../types';
