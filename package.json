@@ -9,7 +9,7 @@
     "watch": "tsc -w",
     "test": "jest",
     "cdk": "cdk",
-    "synthDev": "NODE_ENV=develop DEPLOYMENT=develop cdk synth",
+    "synthDev": "NODE_ENV=develop DEPLOYMENT=develop cdk synth --profile oleg",
     "postinstall": "node-config-ts"
   },
   "devDependencies": {
@@ -22,6 +22,8 @@
     "typescript": "~4.9.5"
   },
   "dependencies": {
+    "@aws-cdk/aws-apigatewayv2": "^1.198.1",
+    "@aws-cdk/aws-apigatewayv2-integrations": "^1.198.1",
     "aws-cdk-lib": "2.72.1",
     "constructs": "^10.1.301",
     "moment": "^2.29.4",

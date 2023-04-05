@@ -1,4 +1,4 @@
-import apigateway from "aws-cdk-lib/aws-apigateway";
+import { LambdaIntegration } from "aws-cdk-lib/aws-apigateway";
 import ec2 from 'aws-cdk-lib/aws-ec2';
 import lambda from 'aws-cdk-lib/aws-lambda-nodejs';
 import { Construct } from 'constructs';
@@ -36,8 +36,8 @@ export class CreativeLibraryFunctionConstruct extends Construct {
         const http = apiGateway.root.addResource('creative-library');
 
         http.addMethod(
-            '*',
-            new apigateway.LambdaIntegration(handler, { proxy: true }),
+            'ANY',
+            new LambdaIntegration(handler, { proxy: true }),
         );
     }
 

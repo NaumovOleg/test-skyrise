@@ -1,4 +1,4 @@
-import apigateway from "aws-cdk-lib/aws-apigateway";
+import { LambdaIntegration } from "aws-cdk-lib/aws-apigateway";
 import * as ec2 from 'aws-cdk-lib/aws-ec2';
 import * as lambda from 'aws-cdk-lib/aws-lambda-nodejs';
 import { Construct } from 'constructs';
@@ -31,11 +31,12 @@ export class MediaPlanFunctionConstruct extends Construct {
         });
 
         this.handler = handler;
-        const http = apiGateway.root.addResource('media-plan');
+
+        const http = apiGateway.root.addResource('media-plan/*');
 
         http.addMethod(
-            '*',
-            new apigateway.LambdaIntegration(handler, { proxy: true }),
+            'ANY',
+            new LambdaIntegration(handler, { proxy: true }),
         );
     }
 
