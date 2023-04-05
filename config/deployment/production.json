@@ -1,6 +1,9 @@
 {
+  "StackEnv": {
+    "account": "389151907894",
+    "region": "eu-west-1"
+  },
   "branch": "production",
-  "stage": "dev",
-  "account": "389151907894",
-  "region": "eu-west-1"
+  "stage": "production",
+  "repositoryName": "skyrise"
 }

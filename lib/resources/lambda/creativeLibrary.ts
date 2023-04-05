@@ -18,11 +18,12 @@ export class CreativeLibraryFunctionConstruct extends Construct {
                 subnetType: ec2.SubnetType.PRIVATE_WITH_EGRESS,
             },
             environment:{
-                NODE_ENV: config.NODE_ENV
+                NODE_ENV: config.NODE_ENV,
+                ENV: config.NODE_ENV
             },
             bundling: {
                 preCompilation: false,
-                externalModules: ['aws-sdk'],
+                externalModules: ['aws-sdk','config'],
             }
         });
 

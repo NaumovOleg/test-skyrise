@@ -1,4 +1,3 @@
 {
-  "NODE_ENV": "@@NODE_ENV",
-  "gitRepo": "skyrise"
+  "NODE_ENV": "@@NODE_ENV"
 }
