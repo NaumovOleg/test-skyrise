@@ -10,14 +10,13 @@ export class SkyriseStack extends cdk.Stack {
 
     const VPC = new VpcConstruct(this, 'Vpc');
     const apiGateway = new RestApiGateway(this, 'ApiGateway');
-    
+
     const lambdaResources = {
       vpc: VPC.vpc,
-      apiGateway: apiGateway.restApi
-    }
-    
-    const creativeLibraryFunction = new MediaPlanFunctionConstruct(this, 'MediaPlanFunc', lambdaResources)
-    const creativeLibraryFunctionConstruct = new CreativeLibraryFunctionConstruct(this, 'CreativeLibraryFunc', lambdaResources)
+      apiGateway: apiGateway.restApi,
+    };
 
+    new MediaPlanFunctionConstruct(this, 'MediaPlanFunc', lambdaResources);
+    new CreativeLibraryFunctionConstruct(this, 'CreativeLibraryFunc', lambdaResources);
   }
 }

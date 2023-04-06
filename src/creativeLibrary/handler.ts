@@ -1,4 +1,4 @@
-module.exports.handler = () => {
+export const handler = () => {
   console.log('TEST--------------------->');
   return null;
 };

@@ -5,7 +5,6 @@ import { config } from 'node-config-ts';
 import { Stage } from './stage';
 import { SynthStep } from './synth';
 
-
 export class DevelopmentPipeline extends cdk.Stack {
   constructor(scope: Construct, id: string, props?: cdk.StackProps) {
     super(scope, id, props);
@@ -15,10 +14,9 @@ export class DevelopmentPipeline extends cdk.Stack {
     const pipeline = new CodePipeline(this, 'skyrise-pipeline-develop', {
       pipelineName: 'skyrise-pipe-develop',
       selfMutation: true,
-      synth: new SynthStep(repo, config.branch)
+      synth: new SynthStep(repo, config.branch),
     });
-    
-    pipeline.addStage(new Stage(this, config.stage));
 
+    pipeline.addStage(new Stage(this, config.stage));
   }
 }
