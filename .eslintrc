@@ -1,0 +1,54 @@
+{
+  "root": true,
+  "env": {
+    "browser": true,
+    "node": true
+  },
+  "parser": "@typescript-eslint/parser",
+  "plugins": ["import", "@typescript-eslint"],
+  "extends": [
+    "airbnb-base",
+    "airbnb-typescript",
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended",
+  ],
+  "parserOptions": {
+    "project": "./tsconfig.eslint.json",
+  },
+  "rules": {
+    "import/no-extraneous-dependencies": 0,
+    "react/jsx-filename-extension": 0,
+    "import/prefer-default-export": 0,
+    "@typescript-eslint/no-unused-vars": ["error", { "vars": "all", "args": "after-used" }],
+    "max-len": ["error", { "code": 120 }],
+    "comma-spacing": ["error", { "before": false, "after": true }],
+    "semi-spacing": ["error", { "before": false, "after": true }],
+    "space-in-parens": ["error", "never"],
+    "linebreak-style": ["error", "unix"],
+    "semi": ["error", "always"],
+    "array-element-newline": [
+      "error",
+      {
+        "ArrayExpression": "consistent",
+        "ArrayPattern": { "minItems": 3 }
+      }
+    ],
+    "@typescript-eslint/comma-spacing": [
+      "error",
+      { "before": false, "after": true }
+    ],
+    "@typescript-eslint/type-annotation-spacing": 2,
+    "no-new": 0
+  },
+  "settings": {
+    "import/parsers": {
+      "@typescript-eslint/parser": [".ts", ".tsx"]
+    },
+    "import/resolver": {
+      "typescript": {
+        "alwaysTryTypes": true,
+        "project": "./"
+      }
+    }
+  }
+}
