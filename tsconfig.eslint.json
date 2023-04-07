@@ -1,5 +1,4 @@
 {
   "extends": "./tsconfig.json",
-  "exclude": ["./cdk.out/*", "./commitlint.config.js"],
-  "include": ["./.eslintrc.js","./src", "./config","./bin", "./lib", "test"]
+  "include": ["./.eslintrc.js","./src", "./config","./bin", "./lib"]
 }

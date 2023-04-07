@@ -1,1 +1,9 @@
 dist
+cdk.out
+.husky
+.vscode
+node_modules
+cdk.out
+.husky
+.vscode
+node_modules

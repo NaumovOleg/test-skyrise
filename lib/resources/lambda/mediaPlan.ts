@@ -1,8 +1,10 @@
-import { LambdaIntegration } from 'aws-cdk-lib/aws-apigateway';
 import * as ec2 from 'aws-cdk-lib/aws-ec2';
 import * as lambda from 'aws-cdk-lib/aws-lambda-nodejs';
 import { Construct } from 'constructs';
 import { config } from 'node-config-ts';
+import { HttpMethod } from '@aws-cdk/aws-apigatewayv2-alpha';
+import { HttpLambdaIntegration } from '@aws-cdk/aws-apigatewayv2-integrations-alpha';
+import { Runtime } from 'aws-cdk-lib/aws-lambda';
 import { LambdaResources } from '../../types';
 
 export class MediaPlanFunctionConstruct extends Construct {
@@ -12,7 +14,8 @@ export class MediaPlanFunctionConstruct extends Construct {
     super(scope, id);
     const { vpc, apiGateway } = resources;
 
-    const handler = new lambda.NodejsFunction(this, 'MediaPlan', {
+    this.handler = new lambda.NodejsFunction(this, 'MediaPlan', {
+      runtime: Runtime.NODEJS_18_X,
       functionName: `mediaPlan-${config.stage}`,
       entry: './src/mediaPlan/handler.ts',
       handler: 'handler',
@@ -30,18 +33,15 @@ export class MediaPlanFunctionConstruct extends Construct {
       },
     });
 
-    this.handler = handler;
-
-    const http = apiGateway.root.addResource('media-plan');
-
-    http.addMethod(
-      'ANY',
-      new LambdaIntegration(handler, { proxy: true }),
+    const lambdaIntegration = new HttpLambdaIntegration(
+      'MediaPlanIntegration',
+      this.handler,
     );
 
-    http.addProxy({
-      defaultIntegration: new LambdaIntegration(handler, { proxy: true }),
-      anyMethod: true,
+    apiGateway.addRoutes({
+      path: '/media-plans',
+      methods: [HttpMethod.ANY],
+      integration: lambdaIntegration,
     });
   }
 }
