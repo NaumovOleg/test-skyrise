@@ -11,7 +11,6 @@ if (!process.env.DEPLOYMENT || !process.env.NODE_ENV) {
 }
 
 const app = new cdk.App();
-new DevelopmentPipeline(app, 'SkyriseDevelopment', { env: config.StackEnv });
-new ProductionPipeline(app, 'SkyriseProduction', { env: config.StackEnv });
-
+new DevelopmentPipeline(app, 'DevPipeline', { env: config.StackEnv });
+new ProductionPipeline(app, 'ProdPipeline', { env: config.StackEnv });
 app.synth();

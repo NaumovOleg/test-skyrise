@@ -1,3 +1,4 @@
 {
-  "ENV": "dev-env"
+  "ENV": "dev-env",
+  "NODE_ENV": "@@NODE_ENV"
 }

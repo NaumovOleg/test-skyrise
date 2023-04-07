@@ -1,3 +1,4 @@
 {
-  "ENV": "prod-env"
+  "ENV": "prod-env",
+  "NODE_ENV": "@@NODE_ENV"
 }
